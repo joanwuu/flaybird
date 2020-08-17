@@ -1,36 +1,46 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
   extends: cc.Component,
 
   properties: {
-    // foo: {
-    //     // ATTRIBUTES:
-    //     default: null,        // The default value will be used only when the component attaching
-    //                           // to a node for the first time
-    //     type: cc.SpriteFrame, // optional, default is typeof default
-    //     serializable: true,   // optional, default is true
-    // },
-    // bar: {
-    //     get () {
-    //         return this._bar;
-    //     },
-    //     set (value) {
-    //         this._bar = value;
-    //     }
-    // },
+    // 小鸟重力值
+    gravity: 0.5,
+    // 小鸟弹跳值
+    birdJump: 6.6,
+    // 动画名称
+    AnimName: "",
+    // 弹跳音效
+    jumpAudio: {
+      default: null,
+      url: cc.AudioClip,
+    },
   },
 
-  // LIFE-CYCLE CALLBACKS:
+  // use this for initialization
+  onLoad: function () {
+    // 获取本身的cc.Animation对象，并播放AnimName动画
+    this.getComponent(cc.Animation).play(this.AnimName)
+    // 初始化速度为0
+    this.velocity = 0
+  },
 
-  // onLoad () {},
+  onStartDrop: function () {
+    this.schedule(this.onDrop, 0.01)
+  },
 
-  start() {},
+  onDrop: function () {
+    this.node.y += this.velocity
+    this.velocity -= this.gravity
+  },
 
-  // update (dt) {},
+  onJump: function () {
+    // 弹跳时，重设向上的速度
+    this.velocity = this.birdJump
+    // 播放弹跳音效
+    cc.audioEngine.playEffect(this.jumpAudio, false)
+  },
+
+  // called every frame, uncomment this function to activate update callback
+  // update: function (dt) {
+
+  // },
 })

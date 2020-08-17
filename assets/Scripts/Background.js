@@ -1,36 +1,43 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
+var Constant = require("Constant")
 
-cc.Class({
+var Background = cc.Class({
   extends: cc.Component,
 
   properties: {
-    // foo: {
-    //     // ATTRIBUTES:
-    //     default: null,        // The default value will be used only when the component attaching
-    //                           // to a node for the first time
-    //     type: cc.SpriteFrame, // optional, default is typeof default
-    //     serializable: true,   // optional, default is true
-    // },
-    // bar: {
-    //     get () {
-    //         return this._bar;
-    //     },
-    //     set (value) {
-    //         this._bar = value;
-    //     }
-    // },
+    // 地板节点数组
+    groundNode: {
+      default: [],
+      type: [cc.Node],
+    },
+    // 地板图片对象
+    groundImg: {
+      default: null,
+      type: cc.Sprite,
+    },
   },
 
-  // LIFE-CYCLE CALLBACKS:
+  // use this for initialization
+  onLoad: function () {
+    // 获取屏幕尺寸
+    this._size = cc.winSize
+    // 获取地板图片的宽度
+    this._width = this.groundImg.spriteFrame.getRect().width
+    // 启动“地板移动控制”计时器
+    this.schedule(this.onGroundMove, Constant.GROUND_MOVE_INTERVAL)
+  },
 
-  // onLoad () {},
+  onGroundMove: function () {
+    this.groundNode[0].x += Constant.GROUND_VX
+    this.groundNode[1].x += Constant.GROUND_VX
+    if (this.groundNode[0].x + this._width / 2 < -this._size.width / 2) {
+      this.groundNode[0].x = this.groundNode[1].x + this._width - 5
+    }
+    if (this.groundNode[1].x + this._width / 2 < -this._size.width / 2) {
+      this.groundNode[1].x = this.groundNode[0].x + this._width - 5
+    }
+  },
+  // called every frame, uncomment this function to activate update callback
+  // update: function (dt) {
 
-  start() {},
-
-  // update (dt) {},
+  // },
 })
