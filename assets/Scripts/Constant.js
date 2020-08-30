@@ -1,36 +1,16 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
-cc.Class({
-  extends: cc.Component,
-
-  properties: {
-    // foo: {
-    //     // ATTRIBUTES:
-    //     default: null,        // The default value will be used only when the component attaching
-    //                           // to a node for the first time
-    //     type: cc.SpriteFrame, // optional, default is typeof default
-    //     serializable: true,   // optional, default is true
-    // },
-    // bar: {
-    //     get () {
-    //         return this._bar;
-    //     },
-    //     set (value) {
-    //         this._bar = value;
-    //     }
-    // },
-  },
-
-  // LIFE-CYCLE CALLBACKS:
-
-  // onLoad () {},
-
-  start() {},
-
-  // update (dt) {},
+var Constant = cc.Enum({
+  // 地板移动时间间隔
+  GROUND_MOVE_INTERVAL: 0.05,
+  // 单位时间地板移动速度
+  GROUND_VX: -5,
+  // 上端管道序号为0
+  PIPE_UP: 0,
+  // 下端管道序号为1
+  PIPE_DOWN: 1,
+  // 游戏失败文字
+  GAMEOVER_TXT: "GAME OVER",
+  // 最高分文字
+  HIGHSCORE_TXT: "HighScore: ",
 })
+
+module.exports = Constant
