@@ -548,8 +548,17 @@
       "__id__": 5
     },
     "_enabled": true,
-    "groundNode": [],
-    "groundImg": null,
+    "groundNode": [
+      {
+        "__id__": 6
+      },
+      {
+        "__id__": 8
+      }
+    ],
+    "groundImg": {
+      "__id__": 7
+    },
     "_id": "37SRxEf7lHCYrotgUXFUqJ"
   },
   {
