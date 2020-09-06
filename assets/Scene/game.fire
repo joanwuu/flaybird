@@ -189,7 +189,7 @@
       "array": [
         0,
         0,
-        415.69219381653056,
+        649.519052838329,
         0,
         0,
         0,
@@ -548,6 +548,8 @@
       "__id__": 5
     },
     "_enabled": true,
+    "groundNode": [],
+    "groundImg": null,
     "_id": "37SRxEf7lHCYrotgUXFUqJ"
   },
   {
@@ -847,7 +849,9 @@
       "__id__": 15
     },
     "_enabled": true,
-    "_normalMaterial": null,
+    "_normalMaterial": {
+      "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+    },
     "_grayMaterial": null,
     "duration": 0.1,
     "zoomScale": 1.2,
@@ -1216,6 +1220,9 @@
       "__id__": 23
     },
     "_enabled": true,
+    "gravity": 0.5,
+    "birdJump": 6.6,
+    "AnimName": "",
     "_id": "d7bvP/WwVLE4OyBUUfCVjM"
   },
   {
@@ -1435,6 +1442,42 @@
       "__id__": 2
     },
     "_enabled": true,
+    "pipeMaxOffsetY": 150,
+    "pipeMinGap": 80,
+    "pipeMaxGap": 150,
+    "pipeSpawnInterval": 4.5,
+    "pipeSpawnOffsetX": 30,
+    "gameReflashTime": 5,
+    "scoreScaleDuration": 0.2,
+    "gameMenu": {
+      "__id__": 12
+    },
+    "bird": {
+      "__id__": 26
+    },
+    "pipesNode": {
+      "__id__": 22
+    },
+    "pipePrefabs": [
+      {
+        "__uuid__": "75826c97-37d9-4999-a651-26961e237b12"
+      },
+      {
+        "__uuid__": "07848eb8-5e58-492f-8869-444a21c6598e"
+      }
+    ],
+    "background": {
+      "__id__": 11
+    },
+    "gameOverText": {
+      "__id__": 28
+    },
+    "scoreText": {
+      "__id__": 30
+    },
+    "highScoreText": {
+      "__id__": 21
+    },
     "_id": "71skJogPJIvarDsa90o2Hx"
   },
   {

@@ -88,13 +88,12 @@ var Game = cc.Class({
   },
 
   setInputControl: function () {
-    var self = this
-    cc.eventManager.addListener(
-      {
-        event: cc.EventListener.TOUCH_ONE_BY_ONE,
-        onTouchBegan: self._onTouchBegan.bind(self),
+    this.node.on(
+      "touchstart",
+      () => {
+        this._onTouchBegan.call(this)
       },
-      self.node
+      this
     )
   },
 
